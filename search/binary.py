@@ -1,5 +1,6 @@
 def binary_search(list, search, start, end):
 
+    print("function called!")
     mid = start + end // 2
     if mid == 0:
         if list[mid] == search:
@@ -12,21 +13,21 @@ def binary_search(list, search, start, end):
 
     guess = list[mid]
 
-    print(guess)
 
     if guess == search:
         return mid
 
     if guess < search:
-        print(list[start:])
-        return binary_search(list, search, start + 1, end)
+        return binary_search(list, search, mid, end)
 
     else:
-        print(list[:end])
-        return binary_search(list, search, start , end - 1)
+        return binary_search(list, search, start , mid)
 
 
 
-my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+my_list = []
 
-print("your target is at the index:" , binary_search(my_list, 11, 0, len(my_list) - 1))
+for i in range(100):
+    my_list.append(i + 1)
+
+print("your target is at the index:" , binary_search(my_list, 3, 0, len(my_list) - 1))
