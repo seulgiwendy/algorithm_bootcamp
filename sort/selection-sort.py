@@ -21,4 +21,4 @@ def selection_sort(list):
 
     return newArray
 
-print(selection_sort([1, 5, 3, 8, 7,]))
+print(selection_sort([6, 1, 5, 3, 8, 7,]))
