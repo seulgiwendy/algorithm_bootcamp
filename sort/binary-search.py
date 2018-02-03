@@ -8,11 +8,10 @@ def binary_search(list, search, start, end):
         else:
             return None
 
-    if mid > len(list) - 1:
+    if mid > end:
         return None
 
     guess = list[mid]
-
 
     if guess == search:
         return mid
@@ -23,11 +22,9 @@ def binary_search(list, search, start, end):
     else:
         return binary_search(list, search, start , mid)
 
-
-
 my_list = []
 
-for i in range(100):
+for i in range(1024):
     my_list.append(i + 1)
 
 print("your target is at the index:" , binary_search(my_list, 3, 0, len(my_list) - 1))
