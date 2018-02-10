@@ -2,6 +2,7 @@ import random
 
 
 def quick_sort(list):
+    print("method called!")
 
     random_index = 0
 
@@ -27,4 +28,4 @@ def quick_sort(list):
     return quick_sort(smaller) + quick_sort([pivot]) + quick_sort(greater)
 
 
-print(quick_sort([10, 13, 12, 11, 9, 8, 1, 4, 3]))
+print(quick_sort([10, 13, 12, 11, 9, ]))
