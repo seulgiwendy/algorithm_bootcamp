@@ -1,15 +1,24 @@
+import random
+
+
 def quick_sort(list):
+
+    random_index = 0
 
     if(len(list) < 2):
         return list
 
     else:
-        pivot = list[0]
+        random_index = random.randrange(0, len(list))
+
+        pivot = list[random_index]
 
         smaller = []
         greater = []
 
-        for i in range(1, len(list)):
+        for i in range(0, len(list)):
+            if i == random_index:
+                continue
             if list[i] <= pivot:
                 smaller.append(list[i])
             else:
