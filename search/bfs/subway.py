@@ -22,6 +22,7 @@ center = Station(2, "중앙로")
 gyeongdae_hospital = Station(1, "경대병원")
 
 
+
 stations = {}
 
 
