@@ -5,4 +5,4 @@ def pow(num, power):
 
     return num * pow(num, power - 1)
 
-print(pow(2, 64))
+print(pow(3, 4))
