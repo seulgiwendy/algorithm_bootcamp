@@ -5,24 +5,18 @@ def longest_palindrom(string):
     if len(string_array) < 3:
         return 0
 
-    if is_palindrom(string_array):
-        return len(string_array)
+    palindroms = []
 
-    else:
-        new_string_array = string_array[:-1]
-        print(new_string_array)
-        return longest_palindrom(''.join(new_string_array))
+    for i in range(0, len(string_array)):
+        for j in range(1, len(string_array) + 1):
+
+            if string_array[i:j] == string_array[i:j][::-1]:
+                palindroms.append(len(string_array[i:j]))
+
+    return max(palindroms)
 
 
-def is_palindrom(string):
 
-    palindrome_flag = False
 
-    for i in range(0, len(string)):
 
-        palindrome_flag = string[i] == string[-i - 1]
 
-    return palindrome_flag
-
-print(longest_palindrom("토마토맛토마토"))
-print(longest_palindrom("토마토맛있어"))
