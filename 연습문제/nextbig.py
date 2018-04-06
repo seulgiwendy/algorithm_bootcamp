@@ -20,15 +20,6 @@ def convert_to_binary(n, digits):
 
     return convert_to_binary(n // 2, digits)
 
-def convert_to_decimal(binary_digits):
-
-    converted_number = 0
-
-    for i in range(0, len(binary_digits)):
-        converted_number += binary_digits[i] * pow(2, i)
-
-    return converted_number
-
 def count_one(digits):
 
     count = 0
@@ -49,4 +40,4 @@ def pow(n, power):
 
     return n * pow(n, power - 1)
 
-print(nextBigNumber(16))
+print(nextBigNumber(1024))
