@@ -15,33 +15,27 @@ def split_string(string):
 
 def return_encrypted(array, n):
     encrypted_char = []
+    for char in array:
+        origin_value = ord(char)
+        next_value = origin_value + (n % 26)
 
-    for str in array:
-        str_code = ord(str)
-        target_code = str_code + (n - 1)
+        if(origin_value == 32):
+            encrypted_char.append(chr(32))
+            continue
 
-        if(str_code == 32):
-            encrypted_char.append(' ')
+        if(origin_value > 64 and origin_value < 91):
+            if next_value > 90:
+                next_value = next_value - 26
 
-        if(str_code < 91 and target_code > 90):
-            temporary_code = str_code + target_code % 26
+        if(origin_value > 96 and origin_value < 123):
+            if next_value > 122:
+                next_value = next_value - 26
 
-            if(temporary_code > 90):
-                target_code = temporary_code - 26
-            else:
-                target_code = temporary_code
-
-        elif(str_code < 123 and target_code > 122):
-            temporary_code = str_code + target_code % 26
-            if(temporary_code > 122):
-                target_code = temporary_code - 26
-            else:
-                target_code = temporary_code
-
-        encrypted_char.append(chr(target_code))
-
+        print(next_value)
+        encrypted_char.append(chr(next_value))
 
     return encrypted_char
 
 
-print(caesar("KouIeeyXQeJDanekJ mbnPgov lsuNNZKwkZpLwxqARNYuCyx", 29))
+
+print(caesar("KouIeeyXQeJDanekJ mbnPgov lsuNNZKwkZpLwxqARNYuCyx", 129))
