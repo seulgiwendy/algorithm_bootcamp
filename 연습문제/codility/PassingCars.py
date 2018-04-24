@@ -1,19 +1,18 @@
 def solution(array):
-    current_index = 0
     answer_count = 0
 
-    while(current_index < len(array)):
-        if array[current_index] == 1 :
-            current_index += 1
+    for i in range(len(array)):
+        if array[i] == 1:
             continue
 
-        for i in range(current_index + 1, len(array)):
-            if array[i] == 1:
-                answer_count += 1
+        check_array = array[i:]
+        answer_count += len([j for j in check_array if j == 1])
 
-        current_index += 1
 
     return answer_count
+
+print(solution([0, 1, 0, 1, 1]))
+
 
 
 
