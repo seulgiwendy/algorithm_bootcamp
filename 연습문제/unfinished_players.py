@@ -21,4 +21,4 @@ def solution(participant, completion):
     return 'no retired players!'
 
 
-print solution(["mislav", "stanko", "mislav", "ana"], ["stanko", "ana", "mislav"])
+print(solution(["mislav", "stanko", "mislav", "ana"], ["stanko", "ana", "mislav"]))
