@@ -27,11 +27,6 @@ class Solution:
         digits_in_reverse_order = []
         for i in range(1, digits + 1):
             divider = math.pow(10, i)
-
-            if i == 1:
-                digits_in_reverse_order.append(x % divider)
-                continue
-
             remainder = x % divider
             digits_in_reverse_order.append(remainder // math.pow(10, i - 1))
 
