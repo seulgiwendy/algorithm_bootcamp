@@ -2,6 +2,7 @@ def collatz(num):
     answer = 0
     return find_by_recurse(num, 0)
 
+
 def find_by_recurse(n, attempt):
     current_attempt = attempt
 
