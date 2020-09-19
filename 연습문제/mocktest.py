@@ -1,40 +1,39 @@
-import collections
+from collections import deque
 
 
 def solution(answers):
-    match_count = {
-        1: make_choice(collections.deque([1, 2, 3, 4, 5]), answers),
-        2: make_choice(collections.deque([2, 1, 2, 3, 2, 4, 2, 5]), answers),
-        3: make_choice(collections.deque([3, 3, 1, 1, 2, 2, 4, 4, 5, 5]), answers)}
+    match_count = {1: 0, 2: 0, 3: 0}
 
-    biggest_count = [1]
+    first = generate_deque([1, 2, 3, 4, 5])
+    second = generate_deque([2, 1, 2, 3, 2, 4, 2, 5])
+    third = generate_deque([3, 3, 1, 1, 2, 2, 4, 4, 5, 5])
 
-    for match_number in match_count:
+    for i in range(0, len(answers)):
+        answer = answers[i]
 
-        if match_count[biggest_count[0]] < match_count[match_number]:
-            biggest_count[0] = match_number
-            continue
+        first_choice = first.popleft()
+        second_choice = second.popleft()
+        third_choice = third.popleft()
 
-        if match_count[biggest_count[0]] == match_count[match_number]:
-            biggest_count.append(match_number)
-            continue
+        if first_choice == answer:
+            match_count[1] = match_count[1] + 1
 
-    returnable_list = list(set(biggest_count))
-    returnable_list.sort()
+        if second_choice == answer:
+            match_count[2] = match_count[2] + 1
 
-    return returnable_list
+        if third_choice == answer:
+            match_count[3] = match_count[3] + 1
 
+        first.append(first_choice)
+        second.append(second_choice)
+        third.append(third_choice)
 
-def make_choice(choices, answers):
-    match_count = 0
-
-    for answer in answers:
-        if choices[0] == answer:
-            match_count += 1
-        choices.rotate(-1)
-
-    return match_count
+    return [key for m in [max(match_count.values())] for key, val in match_count.items() if val == m]
 
 
-print(solution([1,2,3,4,5]))
-print(solution([1,3,2,4,2]))
+def generate_deque(first_five_choices):
+    return deque(first_five_choices)
+
+
+result = solution([1, 3, 2, 4, 2])
+print(result)

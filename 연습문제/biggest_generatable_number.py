@@ -3,22 +3,19 @@ from itertools import permutations
 
 def solution(numbers):
     generated_numbers = generate_possible_permutations(numbers)
-    joined_numbers = []
+    generated_numbers.sort()
 
-    for number in generated_numbers:
-        fetched_numbers = ""
-        for lower_index in range(0, len(numbers)):
-            fetched_numbers += str(number[lower_index])
-
-        joined_numbers.append(int(fetched_numbers))
-
-    joined_numbers.sort()
-
-    return str(joined_numbers[-1]).replace(".0", "")
+    return str(generated_numbers[-1])
 
 
 def generate_possible_permutations(numbers):
-    return list(permutations(numbers, len(numbers)))
+    permutation_numbers = permutations(numbers, len(numbers))
+    generated_numbers = []
+
+    for number in permutation_numbers:
+        generated_numbers.append(int(''.join(map(lambda x: str(x), number))))
+
+    return generated_numbers
 
 
 print(solution([3, 30, 34, 5, 9]))
